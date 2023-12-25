@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot name="bittle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="bittle/materials.urdf.xacro"/>
+    <xacro:include filename="bittle/body.urdf.xacro"/>
+    <xacro:include filename="bittle/leg.urdf.xacro"/>
+
+    <xacro:body/>
+
+    <xacro:leg hside="left" vside="front">
+        <origin xyz="-0.44596 0.52264 -0.02102" rpy="1.5708 0 -1.5708"/>
+        <origin xyz="0.00006 -0.49172 0.03996" rpy="0 0 0"/>
+    </xacro:leg>
+
+    <xacro:leg hside="left" vside="back">
+        <origin xyz="-0.44596 -0.51923 -0.02102" rpy="1.5708 0 -1.5708"/>
+        <origin xyz="0 -0.49172 0.03996" rpy="0 0 0"/>
+    </xacro:leg>
+
+    <xacro:leg hside="right" vside="front">
+        <origin xyz="0.45149 0.52264 -0.02102" rpy="-1.5708 0 -1.5708"/>
+        <origin xyz="0.00006 0.49938 0.03996" rpy="0 0 3.14159"/>
+    </xacro:leg>
+    
+    <xacro:leg hside="right" vside="back">
+        <origin xyz="0.45149 -0.51923 -0.02102" rpy="-1.5708 0 -1.5708"/>
+        <origin xyz="0.00015 0.49938 0.03996" rpy="0 0 3.14159"/>
+    </xacro:leg>
+
+</robot>

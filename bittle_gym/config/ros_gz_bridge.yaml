@@ -1,0 +1,6 @@
+- 
+  gz_topic_name: "/model/vehicle_blue/odometry"
+  gz_type_name: "ignition.msgs.Odometry"
+  ros_topic_name: "/model/vehicle_blue/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  direction: GZ_TO_ROS
