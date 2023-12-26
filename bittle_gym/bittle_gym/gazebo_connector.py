@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-import rclpy
 from rclpy.node import Node
 from ros_gz_interfaces.srv import ControlWorld
 
@@ -7,8 +5,8 @@ from ros_gz_interfaces.srv import ControlWorld
 class GazeboConnector(Node):
 
     def __init__(self, world_name='empty'):
-        """
-        """
+        super().__init__('gazebo_connector')
+
         self.WORLD_NAME = world_name
         self.SERVICE_TIMEOUT = 3.0
         self.SERVICE_NAME = f"/world/{self.WORLD_NAME}/control"
@@ -21,12 +19,12 @@ class GazeboConnector(Node):
         try:
             req = ControlWorld.Request()
             req.world_control.pause = True
-            res = self.control_world_cli.call()
+            res = self.control_world_cli.call(req)
         except TypeError as ex:
             self.get_logger().error(f"{self.SERVICE_NAME} service call failed")
             return False
         return True
-        
+
     def unpause(self):
         if not self.control_world_cli.wait_for_service(timeout_sec=self.SERVICE_TIMEOUT):
             self.get_logger().error(f"{self.SERVICE_NAME} service timeout after {self.SERVICE_TIMEOUT}s.")
@@ -34,7 +32,7 @@ class GazeboConnector(Node):
         try:
             req = ControlWorld.Request()
             req.world_control.pause = False
-            res = self.control_world_cli.call()
+            res = self.control_world_cli.call(req)
         except TypeError as ex:
             self.get_logger().error(f"{self.SERVICE_NAME} service call failed")
             return False
@@ -46,8 +44,9 @@ class GazeboConnector(Node):
             return False
         try:
             req = ControlWorld.Request()
+            req.world_control.pause = True
             req.world_control.step = True
-            res = self.control_world_cli.call()
+            res = self.control_world_cli.call(req)
         except TypeError as ex:
             self.get_logger().error(f"{self.SERVICE_NAME} service call failed")
             return False
@@ -59,8 +58,10 @@ class GazeboConnector(Node):
             return False
         try:
             req = ControlWorld.Request()
+            req.world_control.pause = True
+            req.world_control.step = True
             req.world_control.reset.all = True
-            res = self.control_world_cli.call()
+            res = self.control_world_cli.call(req)
         except TypeError as ex:
             self.get_logger().error(f"{self.SERVICE_NAME} service call failed")
             return False

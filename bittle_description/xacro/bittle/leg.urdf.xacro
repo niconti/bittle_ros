@@ -1,94 +1,135 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro name="leg" params="hside vside
-        *origin_shoulder
-        *origin_knee">
+  <xacro:macro name="leg" params="hside vside
+    *origin_shoulder
+    *origin_knee">
 
-        <joint name="${hside}_${vside}_shoulder_joint" type="revolute">
-            <xacro:insert_block name="origin_shoulder"/>
-            <parent link="base_frame_link"/>
-            <child link="${hside}_${vside}_shoulder_link"/>
-            <axis xyz="0 0 1"/>
-            <limit lower="-1.5708" upper="1.22173" effort="1.0" velocity="1.5708"/>
-        </joint>
+    <joint name="${hside}_${vside}_shoulder_joint" type="revolute">
+      <xacro:insert_block name="origin_shoulder"/>
+      <parent link="base_frame_link"/>
+      <child link="${hside}_${vside}_shoulder_link"/>
+      <xacro:if value="${hside == 'left'}">
+        <axis xyz="0 0 1"/>
+      </xacro:if>
+      <xacro:if value="${hside == 'right'}">
+        <axis xyz="0 0 -1"/>
+      </xacro:if>
+      <limit lower="-1.5708" upper="1.22173" effort="1.0" velocity="1.5708"/>
+    </joint>
 
-        <link name="${hside}_${vside}_shoulder_link">
-            <visual>
-                <xacro:if value="${hside == 'left'}">
-                    <origin xyz="0 -0.24575 0.0777" rpy="-1.5708 1.5708 -1.5708"/>
-                </xacro:if>
-                <xacro:if value="${hside == 'right'}">
-                    <origin xyz="0 0.24575 0.0777" rpy="1.5708 -1.5708 -1.5708"/>
-                </xacro:if>
-                <geometry>
-                    <mesh filename="package://bittle_description/meshes/visual/shoulder.stl"/>
-                </geometry>
-                <material name="yellow"/>
-            </visual>
-            <collision>
-                <xacro:if value="${hside == 'left'}">
-                    <origin xyz="0 -0.24575 0.0777" rpy="-1.5708 1.5708 -1.5708"/>
-                </xacro:if>
-                <xacro:if value="${hside == 'right'}">
-                    <origin xyz="0 0.24575 0.0777" rpy="1.5708 -1.5708 -1.5708"/>
-                </xacro:if>
-                <geometry>
-                    <mesh filename="package://bittle_description/meshes/visual/shoulder.stl"/>
-                </geometry>
-            </collision>
-            <inertial>
-                <origin xyz="0 -0.24575 0.04372" rpy="0 0 0"/>
-                <mass value="0.006"/>
-                <inertia 
-                    ixx="0.00044" ixy="0" ixz="0" 
-                    iyy="0.00005" iyz="0" 
-                    izz="0.00044" />
-            </inertial>
-        </link>
+    <!-- Joint controller plugin -->
+    <!-- 
+    <gazebo>
+      <plugin filename="ignition-gazebo-joint-controller-system" 
+            name="ignition::gazebo::systems::JointController">
+        <joint_name>${hside}_${vside}_shoulder_joint</joint_name>
+      </plugin>
+    </gazebo> 
+    -->
+    <gazebo>
+      <plugin filename="ignition-gazebo-joint-position-controller-system" 
+              name="ignition::gazebo::systems::JointPositionController">
+        <joint_name>${hside}_${vside}_shoulder_joint</joint_name>
+        <topic>/joint/${hside}_${vside}_shoulder_joint/cmd_pos</topic>
+      </plugin>
+    </gazebo>
 
-        <joint name="${hside}_${vside}_knee_joint" type="revolute">
-            <xacro:insert_block name="origin_knee"/>
-            <parent link="${hside}_${vside}_shoulder_link"/>
-            <child link="${hside}_${vside}_knee_link"/>
-            <axis xyz="0 0 1"/>
-            <limit lower="-1.22173" upper="1.48353" effort="1.0" velocity="1.5708"/>
-        </joint>
+    <link name="${hside}_${vside}_shoulder_link">
+      <visual>
+        <xacro:if value="${hside == 'left'}">
+          <origin xyz="0 -0.24575 0.0777" rpy="-1.5708 1.5708 -1.5708"/>
+        </xacro:if>
+        <xacro:if value="${hside == 'right'}">
+          <origin xyz="0 0.24575 0.0777" rpy="1.5708 -1.5708 -1.5708"/>
+        </xacro:if>
+        <geometry>
+          <mesh filename="package://bittle_description/meshes/visual/shoulder.stl"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <collision>
+        <xacro:if value="${hside == 'left'}">
+          <origin xyz="0 -0.24575 0.0777" rpy="-1.5708 1.5708 -1.5708"/>
+        </xacro:if>
+        <xacro:if value="${hside == 'right'}">
+          <origin xyz="0 0.24575 0.0777" rpy="1.5708 -1.5708 -1.5708"/>
+        </xacro:if>
+        <geometry>
+          <mesh filename="package://bittle_description/meshes/visual/shoulder.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 -0.24575 0.04372" rpy="0 0 0"/>
+        <mass value="0.006"/>
+        <inertia 
+            ixx="0.00044" ixy="0" ixz="0" 
+            iyy="0.00005" iyz="0" 
+            izz="0.00044" />
+      </inertial>
+    </link>
 
-        <link name="${hside}_${vside}_knee_link">
-            <visual>
-                <xacro:if value="${hside == 'left'}">
-                    <origin xyz="-0.09232 0 -0.14614" rpy="-1.5708 1.5708 0"/>
-                </xacro:if>
-                <xacro:if value="${hside == 'right'}">
-                    <origin xyz="0.09497 -0.00238 -0.1382" rpy="-1.5708 -1.5708 0"/>
-                </xacro:if>
-                <geometry>
-                    <mesh filename="package://bittle_description/meshes/visual/${hside}_knee.stl"/>
-                </geometry>
-                <material name="black"/>
-            </visual>
-            <collision>
-                <xacro:if value="${hside == 'left'}">
-                    <origin xyz="-0.09232 0 -0.14614" rpy="-1.5708 1.5708 0"/>
-                </xacro:if>
-                <xacro:if value="${hside == 'right'}">
-                    <origin xyz="0.09497 -0.00238 -0.1382" rpy="-1.5708 -1.5708 0"/>
-                </xacro:if>
-                <geometry>
-                    <mesh filename="package://bittle_description/meshes/visual/${hside}_knee.stl"/>
-                </geometry>
-            </collision>
-            <inertial>
-                <origin xyz="-0.08998 0 -0.14638" rpy="0 0 0"/>
-                <mass value="0.017"/>
-                <inertia 
-                    ixx="0.00006" ixy="0" ixz="0" 
-                    iyy="0.00065" iyz="0" 
-                    izz="0.00063" />
-            </inertial>
-        </link>
+    <joint name="${hside}_${vside}_knee_joint" type="revolute">
+      <xacro:insert_block name="origin_knee"/>
+      <parent link="${hside}_${vside}_shoulder_link"/>
+      <child link="${hside}_${vside}_knee_link"/>
+      <xacro:if value="${hside == 'left'}">
+        <axis xyz="0 0 1"/>
+      </xacro:if>
+      <xacro:if value="${hside == 'right'}">
+        <axis xyz="0 0 -1"/>
+      </xacro:if>
+      <limit lower="-1.22173" upper="1.48353" effort="1.0" velocity="1.5708"/>
+    </joint>
 
-    </xacro:macro>
+    <!-- Joint controller plugin -->
+    <!-- <gazebo>
+      <plugin filename="ignition-gazebo-joint-controller-system" name="ignition::gazebo::systems::JointController">
+          <joint_name>${hside}_${vside}_knee_joint</joint_name>
+      </plugin>
+    </gazebo> -->
+    <gazebo>
+      <plugin filename="ignition-gazebo-joint-position-controller-system" 
+              name="ignition::gazebo::systems::JointPositionController">
+        <joint_name>${hside}_${vside}_knee_joint</joint_name>
+        <topic>/joint/${hside}_${vside}_knee_joint/cmd_pos</topic>
+      </plugin>
+    </gazebo>
+
+    <link name="${hside}_${vside}_knee_link">
+      <visual>
+        <xacro:if value="${hside == 'left'}">
+          <origin xyz="-0.09232 0 -0.14614" rpy="-1.5708 1.5708 0"/>
+        </xacro:if>
+        <xacro:if value="${hside == 'right'}">
+          <origin xyz="0.09497 -0.00238 -0.1382" rpy="-1.5708 -1.5708 0"/>
+        </xacro:if>
+        <geometry>
+          <mesh filename="package://bittle_description/meshes/visual/${hside}_knee.stl"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+      <collision>
+        <xacro:if value="${hside == 'left'}">
+          <origin xyz="-0.09232 0 -0.14614" rpy="-1.5708 1.5708 0"/>
+        </xacro:if>
+        <xacro:if value="${hside == 'right'}">
+          <origin xyz="0.09497 -0.00238 -0.1382" rpy="-1.5708 -1.5708 0"/>
+        </xacro:if>
+        <geometry>
+          <mesh filename="package://bittle_description/meshes/visual/${hside}_knee.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="-0.08998 0 -0.14638" rpy="0 0 0"/>
+        <mass value="0.017"/>
+        <inertia 
+            ixx="0.00006" ixy="0" ixz="0" 
+            iyy="0.00065" iyz="0" 
+            izz="0.00063" />
+      </inertial>
+    </link>
+
+  </xacro:macro>
 
 </robot>

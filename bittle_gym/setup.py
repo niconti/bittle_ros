@@ -21,11 +21,12 @@ setup(
     zip_safe=True,
     maintainer='niconti',
     maintainer_email='continicola89@gmail.com',
-    description='TODO: Package description',
+    description='Bittle reinforcement learning with gymnasium',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'bittle_gym = bittle_gym.bittle_env:main',
         ],
     },
 )

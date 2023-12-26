@@ -1,0 +1,600 @@
+<sdf version='1.9'>
+  <model name='bittle'>
+    <link name='base_frame_link'>
+      <inertial>
+        <pose>0.0002851396648044692 -0.002915027932960893 -0.005331061452513968 0 0 0</pose>
+        <mass>0.17899999999999999</mass>
+        <inertia>
+          <ixx>0.021722274733573181</ixx>
+          <ixy>1.4649177430167591e-07</ixy>
+          <ixz>-2.1691703376536309e-05</ixz>
+          <iyy>0.0094790842019698337</iyy>
+          <iyz>0.00028841742705530731</iyz>
+          <izz>0.02758332214614637</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_frame_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/base_frame.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_frame_link_fixed_joint_lump__battery_link_collision_1'>
+        <pose>0.00047 -0.009169999999999999 -0.04848 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/collision/battery.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_frame_link_fixed_joint_lump__cover_link_collision_2'>
+        <pose>0.0014 0 0.1251 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/collision/cover.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_frame_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/base_frame.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 0.0735294 1</diffuse>
+          <ambient>1 1 0.0735294 1</ambient>
+        </material>
+      </visual>
+      <visual name='base_frame_link_fixed_joint_lump__battery_link_visual_1'>
+        <pose>0.00047 -0.009169999999999999 -0.04848 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/battery.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.215686 0.215686 0.215686 1</diffuse>
+          <ambient>0.215686 0.215686 0.215686 1</ambient>
+        </material>
+      </visual>
+      <visual name='base_frame_link_fixed_joint_lump__cover_link_visual_2'>
+        <pose>0.0014 0 0.1251 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/cover.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.215686 0.215686 0.215686 1</diffuse>
+          <ambient>0.215686 0.215686 0.215686 1</ambient>
+        </material>
+      </visual>
+      <visual name='base_frame_link_fixed_joint_lump__mainboard_link_visual_3'>
+        <pose>0.00652 -0.00827 0.06423 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/plane.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name='base_frame_link_fixed_joint_lump__imu_link_visual_4'>
+        <pose>0 0 0.07009 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/imu.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.215686 0.215686 0.215686 1</diffuse>
+          <ambient>0.215686 0.215686 0.215686 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='left_back_shoulder_joint' type='revolute'>
+      <pose relative_to='base_frame_link'>-0.44596 -0.51923 -0.02102 1.5708 0 -1.5708</pose>
+      <parent>base_frame_link</parent>
+      <child>left_back_shoulder_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.22173</upper>
+          <effort>1</effort>
+          <velocity>1.5708</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_back_shoulder_link'>
+      <pose relative_to='left_back_shoulder_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 -0.24575 0.04372 0 0 0</pose>
+        <mass>0.0060000000000000001</mass>
+        <inertia>
+          <ixx>0.00044000000000000002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>5.0000000000000002e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.00044000000000000002</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_back_shoulder_link_collision'>
+        <pose>0 -0.24575 0.07770000000000001 0 1.570796326794897 -3.673205103373466e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/shoulder.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_back_shoulder_link_visual'>
+        <pose>0 -0.24575 0.07770000000000001 0 1.570796326794897 -3.673205103373466e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/shoulder.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 0.0735294 1</diffuse>
+          <ambient>1 1 0.0735294 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='left_back_knee_joint' type='revolute'>
+      <pose relative_to='left_back_shoulder_link'>0 -0.49172 0.03996 0 0 0</pose>
+      <parent>left_back_shoulder_link</parent>
+      <child>left_back_knee_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.22173</lower>
+          <upper>1.48353</upper>
+          <effort>1</effort>
+          <velocity>1.5708</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_back_knee_link'>
+      <pose relative_to='left_back_knee_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.08998 0 -0.14638 0 0 0</pose>
+        <mass>0.017000000000000001</mass>
+        <inertia>
+          <ixx>6.0000000000000002e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00064999999999999997</iyy>
+          <iyz>0</iyz>
+          <izz>0.00063000000000000003</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_back_knee_link_collision'>
+        <pose>-0.09232 0 -0.14614 0 1.570796326794897 1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/left_knee.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_back_knee_link_visual'>
+        <pose>-0.09232 0 -0.14614 0 1.570796326794897 1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/left_knee.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.215686 0.215686 0.215686 1</diffuse>
+          <ambient>0.215686 0.215686 0.215686 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='left_front_shoulder_joint' type='revolute'>
+      <pose relative_to='base_frame_link'>-0.44596 0.52264 -0.02102 1.5708 0 -1.5708</pose>
+      <parent>base_frame_link</parent>
+      <child>left_front_shoulder_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.22173</upper>
+          <effort>1</effort>
+          <velocity>1.5708</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_front_shoulder_link'>
+      <pose relative_to='left_front_shoulder_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 -0.24575 0.04372 0 0 0</pose>
+        <mass>0.0060000000000000001</mass>
+        <inertia>
+          <ixx>0.00044000000000000002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>5.0000000000000002e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.00044000000000000002</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_front_shoulder_link_collision'>
+        <pose>0 -0.24575 0.07770000000000001 0 1.570796326794897 -3.673205103373466e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/shoulder.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_front_shoulder_link_visual'>
+        <pose>0 -0.24575 0.07770000000000001 0 1.570796326794897 -3.673205103373466e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/shoulder.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 0.0735294 1</diffuse>
+          <ambient>1 1 0.0735294 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='left_front_knee_joint' type='revolute'>
+      <pose relative_to='left_front_shoulder_link'>6e-05 -0.49172 0.03996 0 0 0</pose>
+      <parent>left_front_shoulder_link</parent>
+      <child>left_front_knee_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.22173</lower>
+          <upper>1.48353</upper>
+          <effort>1</effort>
+          <velocity>1.5708</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_front_knee_link'>
+      <pose relative_to='left_front_knee_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.08998 0 -0.14638 0 0 0</pose>
+        <mass>0.017000000000000001</mass>
+        <inertia>
+          <ixx>6.0000000000000002e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00064999999999999997</iyy>
+          <iyz>0</iyz>
+          <izz>0.00063000000000000003</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_front_knee_link_collision'>
+        <pose>-0.09232 0 -0.14614 0 1.570796326794897 1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/left_knee.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_front_knee_link_visual'>
+        <pose>-0.09232 0 -0.14614 0 1.570796326794897 1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/left_knee.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.215686 0.215686 0.215686 1</diffuse>
+          <ambient>0.215686 0.215686 0.215686 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='right_back_shoulder_joint' type='revolute'>
+      <pose relative_to='base_frame_link'>0.45149 -0.51923 -0.02102 -1.5708 0 -1.5708</pose>
+      <parent>base_frame_link</parent>
+      <child>right_back_shoulder_link</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.22173</upper>
+          <effort>1</effort>
+          <velocity>1.5708</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_back_shoulder_link'>
+      <pose relative_to='right_back_shoulder_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 -0.24575 0.04372 0 0 0</pose>
+        <mass>0.0060000000000000001</mass>
+        <inertia>
+          <ixx>0.00044000000000000002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>5.0000000000000002e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.00044000000000000002</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_back_shoulder_link_collision'>
+        <pose>0 0.24575 0.07770000000000001 0 -1.570796326794897 -3.673205103373466e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/shoulder.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_back_shoulder_link_visual'>
+        <pose>0 0.24575 0.07770000000000001 0 -1.570796326794897 -3.673205103373466e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/shoulder.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 0.0735294 1</diffuse>
+          <ambient>1 1 0.0735294 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='right_back_knee_joint' type='revolute'>
+      <pose relative_to='right_back_shoulder_link'>0.00015 0.49938 0.03996 0 0 3.141592653589793</pose>
+      <parent>right_back_shoulder_link</parent>
+      <child>right_back_knee_link</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1.22173</lower>
+          <upper>1.48353</upper>
+          <effort>1</effort>
+          <velocity>1.5708</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_back_knee_link'>
+      <pose relative_to='right_back_knee_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.08998 0 -0.14638 0 0 0</pose>
+        <mass>0.017000000000000001</mass>
+        <inertia>
+          <ixx>6.0000000000000002e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00064999999999999997</iyy>
+          <iyz>0</iyz>
+          <izz>0.00063000000000000003</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_back_knee_link_collision'>
+        <pose>0.09497 -0.00238 -0.1382 0 -1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/right_knee.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_back_knee_link_visual'>
+        <pose>0.09497 -0.00238 -0.1382 0 -1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/right_knee.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.215686 0.215686 0.215686 1</diffuse>
+          <ambient>0.215686 0.215686 0.215686 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='right_front_shoulder_joint' type='revolute'>
+      <pose relative_to='base_frame_link'>0.45149 0.52264 -0.02102 -1.5708 0 -1.5708</pose>
+      <parent>base_frame_link</parent>
+      <child>right_front_shoulder_link</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.22173</upper>
+          <effort>1</effort>
+          <velocity>1.5708</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_front_shoulder_link'>
+      <pose relative_to='right_front_shoulder_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 -0.24575 0.04372 0 0 0</pose>
+        <mass>0.0060000000000000001</mass>
+        <inertia>
+          <ixx>0.00044000000000000002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>5.0000000000000002e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.00044000000000000002</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_front_shoulder_link_collision'>
+        <pose>0 0.24575 0.07770000000000001 0 -1.570796326794897 -3.673205103373466e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/shoulder.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_front_shoulder_link_visual'>
+        <pose>0 0.24575 0.07770000000000001 0 -1.570796326794897 -3.673205103373466e-06</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/shoulder.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 0.0735294 1</diffuse>
+          <ambient>1 1 0.0735294 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='right_front_knee_joint' type='revolute'>
+      <pose relative_to='right_front_shoulder_link'>6e-05 0.49938 0.03996 0 0 3.141592653589793</pose>
+      <parent>right_front_shoulder_link</parent>
+      <child>right_front_knee_link</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1.22173</lower>
+          <upper>1.48353</upper>
+          <effort>1</effort>
+          <velocity>1.5708</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_front_knee_link'>
+      <pose relative_to='right_front_knee_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.08998 0 -0.14638 0 0 0</pose>
+        <mass>0.017000000000000001</mass>
+        <inertia>
+          <ixx>6.0000000000000002e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00064999999999999997</iyy>
+          <iyz>0</iyz>
+          <izz>0.00063000000000000003</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_front_knee_link_collision'>
+        <pose>0.09497 -0.00238 -0.1382 0 -1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/right_knee.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_front_knee_link_visual'>
+        <pose>0.09497 -0.00238 -0.1382 0 -1.570796326794897 -1.570796326794897</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bittle_description/meshes/visual/right_knee.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.215686 0.215686 0.215686 1</diffuse>
+          <ambient>0.215686 0.215686 0.215686 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <plugin name='ignition::gazebo::systems::Imu' filename='ignition-gazebo-imu-system'/>
+    <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+      <joint_name>left_front_shoulder_joint</joint_name>
+      <topic>/joint/left_front_shoulder_joint/cmd_pos</topic>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+      <joint_name>left_front_knee_joint</joint_name>
+      <topic>/joint/left_front_knee_joint/cmd_pos</topic>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+      <joint_name>left_back_shoulder_joint</joint_name>
+      <topic>/joint/left_back_shoulder_joint/cmd_pos</topic>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+      <joint_name>left_back_knee_joint</joint_name>
+      <topic>/joint/left_back_knee_joint/cmd_pos</topic>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+      <joint_name>right_front_shoulder_joint</joint_name>
+      <topic>/joint/right_front_shoulder_joint/cmd_pos</topic>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+      <joint_name>right_front_knee_joint</joint_name>
+      <topic>/joint/right_front_knee_joint/cmd_pos</topic>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+      <joint_name>right_back_shoulder_joint</joint_name>
+      <topic>/joint/right_back_shoulder_joint/cmd_pos</topic>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::JointPositionController' filename='ignition-gazebo-joint-position-controller-system'>
+      <joint_name>right_back_knee_joint</joint_name>
+      <topic>/joint/right_back_knee_joint/cmd_pos</topic>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::JointStatePublisher' filename='ignition-gazebo-joint-state-publisher-system'/>
+    <frame name='battery_joint' attached_to='base_frame_link'>
+      <pose>0.00047 -0.00917 -0.04848 0 -0 0</pose>
+    </frame>
+    <frame name='battery_link' attached_to='battery_joint'/>
+    <frame name='cover_joint' attached_to='base_frame_link'>
+      <pose>0.0014 0 0.1251 0 -0 0</pose>
+    </frame>
+    <frame name='cover_link' attached_to='cover_joint'/>
+    <frame name='imu_joint' attached_to='mainboard_link'>
+      <pose>-0.00652 0.00827 0.00586 0 0 -3.14159</pose>
+    </frame>
+    <frame name='imu_link' attached_to='imu_joint'/>
+    <frame name='mainboard_joint' attached_to='base_frame_link'>
+      <pose>0.00652 -0.00827 0.06423 0 -0 0</pose>
+    </frame>
+    <frame name='mainboard_link' attached_to='mainboard_joint'/>
+  </model>
+</sdf>

@@ -18,12 +18,17 @@
 
     <xacro:leg hside="right" vside="front">
         <origin xyz="0.45149 0.52264 -0.02102" rpy="-1.5708 0 -1.5708"/>
-        <origin xyz="0.00006 0.49938 0.03996" rpy="0 0 3.14159"/>
+        <origin xyz="0.00006 0.49938 0.03996" rpy="0. 0. ${pi}"/>
     </xacro:leg>
     
     <xacro:leg hside="right" vside="back">
         <origin xyz="0.45149 -0.51923 -0.02102" rpy="-1.5708 0 -1.5708"/>
-        <origin xyz="0.00015 0.49938 0.03996" rpy="0 0 3.14159"/>
+        <origin xyz="0.00015 0.49938 0.03996" rpy="0. 0. ${pi}"/>
     </xacro:leg>
+
+    <!-- Joint states plugin -->
+    <gazebo>
+        <plugin filename="ignition-gazebo-joint-state-publisher-system" name="ignition::gazebo::systems::JointStatePublisher"/>
+    </gazebo>
 
 </robot>
